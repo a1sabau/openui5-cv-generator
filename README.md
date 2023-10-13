@@ -1,6 +1,6 @@
 ## OpenUI5 Curriculum Vitae Generator
 
-Generate HTML and PDF versions of your CV with a SAPUI5 style look using SAP OpenUI5 components.
+Generate HTML and PDF versions of your CV with a SAPUI5 style look using SAP OpenUI5 components. \
 See a generated example at [asabau.com/sapui5/](https://asabau.com/sapui5/).
 
 Each CV section (experience, education, etc..) corresponds to a separate CDS entry. Just modify the existing initial data (csv files) with your own.
@@ -39,10 +39,19 @@ npm run export
 
 The corresponding files will be generated under `packages/frontend/webapp/localService`.
 
+### Enable usage of mock data
+
+In `initMockServer.ts` update the `enableMockServer` flag
+
+```
+const enableMockServer = true;
+```
+
 ### Build a self-contained static html version
 
 ```
 cd packages/frontend
+npm run build:opt
 npm run build:clean
 ```
 
