@@ -12,18 +12,21 @@ div.ui5_cv_spacious mark {
   color: #000;
 }
 
-div[id$='idAboutThisCVTitle'] {
+div[id$='idAboutThisCVTitle'],
+a[id*='showCertificationLink'] {
   display: none;
 }
 
 @media print {
   /* START hide / show some elements for printing */
-  div[id$='idAboutThisCVTitle'] {
+  div[id$='idAboutThisCVTitle'],
+  a[id*='showCertificationLink'] {
     display: block;
   }
 
   div[id$='idAboutThisPageTitle'],
-  button[id$='idCvSwitchButton'] {
+  button[id$='idCvSwitchButton'],
+  button[id*='showCertificationButton'] {
     display: none;
   }
 

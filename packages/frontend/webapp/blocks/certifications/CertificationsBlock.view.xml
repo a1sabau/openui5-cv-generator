@@ -62,12 +62,20 @@
                             </HBox>
 
                             <Button
+                                id="showCertificationButton"
                                 icon="sap-icon://action"
                                 data:link="{link}"
                                 iconFirst="false"
-                                text="Show credential"
+                                text="Show certification"
                                 visible="{= ${link} ? true : false }"
                                 press="openLink"
+                            />
+                            <Link
+                                id="showCertificationLink"
+                                text="Show certification"
+                                visible="{= ${link} ? true : false }"
+                                href="{link}"
+                                target="_blank"
                             />
                         </VBox>
                     </VBox>
@@ -75,7 +83,7 @@
                     <VBox>
                         <layoutData>
                             <l:GridData
-                                span="XL5 L5 M12 S12"
+                                span="XL8 L7 M12 S12"
                                 linebreakS="true"
                                 linebreakM="true"
                             />

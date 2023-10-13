@@ -44,7 +44,7 @@
                     <VBox>
                         <layoutData>
                             <l:GridData
-                                span="XL5 L5 M12 S12"
+                                span="XL8 L7 M12 S12"
                                 linebreakS="true"
                                 linebreakM="true"
                             />
