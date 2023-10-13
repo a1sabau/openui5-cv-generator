@@ -1,0 +1,13 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:controls="ui5.cv.controls"
+>
+    <HBox>
+        <controls:MarkdownViewer
+            id="idAbout2"
+            content="{about}"
+            cols="2"
+        />
+    </HBox>
+</mvc:View>
