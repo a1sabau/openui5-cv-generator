@@ -11,22 +11,6 @@
     xmlns:about="ui5.cv.blocks.about"
     height="100%"
 >
-    <!-- <m:Page
-        backgroundDesign="Standard"
-        contentOnlyBusy="false"
-        enableScrolling="true"
-        floatingFooter="false"
-        navButtonTooltip=""
-        showFooter="true"
-        showHeader="true"
-        showNavButton="false"
-        showSubHeader="true"
-        title=""
-        titleAlignment="Auto"
-        titleLevel="Auto"
-    >
-        <m:content>
-             -->
     <ObjectPageLayout
         id="ObjectPageLayout"
         showTitleInHeaderContent="true"
@@ -123,12 +107,4 @@
             </ObjectPageSection>
         </sections>
     </ObjectPageLayout>
-
-    <!-- </m:content>
-        <m:customHeader />
-        <m:footer />
-        <m:headerContent />
-        <m:landmarkInfo />
-        <m:subHeader />
-    </m:Page> -->
 </mvc:View>
