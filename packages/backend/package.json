@@ -1,0 +1,34 @@
+{
+  "name": "ui5-cv-generator-backend",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.11.7",
+    "@sap/cds": "^7",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@types/node": "^20.8.4"
+  },
+  "scripts": {
+    "schema:show": "cds-ts compile srv/cv --to sql",
+    "start": "cds-ts watch",
+    "export": "ts-node srv/utils/export.ts"
+  },
+  "cds_ignore": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "./db.sqlite"
+        }
+      }
+    }
+  },
+  "cds": {
+    "cov2ap": {
+      "plugin": true
+    }
+  }
+}

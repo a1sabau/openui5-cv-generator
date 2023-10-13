@@ -1,0 +1,14 @@
+{
+  "cov2ap": {
+    "plugin": true
+  },
+  "cdsc": {
+    "severities": {
+      "odata-spec-violation-array": "Error",
+      "odata-spec-violation-param": "Error",
+      "odata-spec-violation-returns": "Error",
+      "odata-spec-violation-assoc": "Error",
+      "odata-spec-violation-constraints": "Error"
+    }
+  }
+}
