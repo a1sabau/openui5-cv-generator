@@ -1,0 +1,16 @@
+GET http://localhost:4004/odata/v4/cv/CvCertifications
+
+###
+
+GET http://localhost:4004/odata/v4/cv/Cvs(1)
+
+###
+
+GET http://localhost:4004/odata/v4/browse/Cv
+
+###
+
+GET http://localhost:4004/odata/v2/browse/Cv(1)/Projects
+
+
+
