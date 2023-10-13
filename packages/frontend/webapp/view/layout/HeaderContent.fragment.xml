@@ -167,8 +167,8 @@
                         class="sapUiTinyMarginEnd"
                     />
                     <m:Link
-                        text="github.com/asabau/cv-generator"
-                        href="https://github.com"
+                        text="openui5-cv-generator"
+                        href="https://github.com/a1sabau/openui5-cv-generator"
                     />
                 </m:HBox>
             </m:VBox>
