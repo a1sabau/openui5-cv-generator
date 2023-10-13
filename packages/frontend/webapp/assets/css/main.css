@@ -1,0 +1,60 @@
+li.ui5_cv_noBorder {
+  border: none;
+}
+
+div.ui5_cv_spacious p {
+  line-height: 1.5rem;
+}
+
+div.ui5_cv_spacious mark {
+  background: none;
+  font-weight: 700;
+  color: #000;
+}
+
+div[id$='idAboutThisCVTitle'] {
+  display: none;
+}
+
+@media print {
+  /* START hide / show some elements for printing */
+  div[id$='idAboutThisCVTitle'] {
+    display: block;
+  }
+
+  div[id$='idAboutThisPageTitle'],
+  button[id$='idCvSwitchButton'] {
+    display: none;
+  }
+
+  section {
+    background: white !important;
+  }
+  /* END hide / show some elements for printing */
+
+  /** START enforce nice looking page breaks, this needs to be done per cv basis **/
+  ul[id*='jobsList'] > li:nth-child(2) {
+    break-after: always;
+  }
+
+  li {
+    break-after: always;
+  }
+
+  /** START print the entire page not just the current visible part **/
+  .sapUiComponentContainer > div > div,
+  .sapMNavItem {
+    height: auto !important;
+  }
+
+  .sapMApp {
+    overflow: visible !important;
+  }
+
+  .sapUxAPObjectPageLayout {
+    overflow: visible !important;
+    display: inline-block !important;
+    background: white !important;
+  }
+  /** END print the entire page not just the current visible part **/
+}
