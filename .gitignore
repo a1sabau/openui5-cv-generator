@@ -33,3 +33,8 @@ mta_archives/
 dist/
 bundle/
 out/
+
+*.txt
+pdf/
+img/
+mockData/
