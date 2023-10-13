@@ -1,0 +1,177 @@
+<core:FragmentDefinition
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <m:HeaderContainer
+        id="headerContainer"
+        scrollStep="200"
+        showDividers="false"
+    >
+        <m:HBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <m:Avatar
+                src="./assets/img/profile-final.png"
+                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                displaySize="XL"
+            />
+
+            <m:VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+                <m:Title
+                    text="Contact Information"
+                    class="sapUiTinyMarginBottom"
+                />
+
+                <m:HBox class="sapUiTinyMarginBottom">
+                    <core:Icon src="sap-icon://account" />
+                    <m:Link
+                        text="{fullName}"
+                        class="sapUiSmallMarginBegin"
+                    />
+                </m:HBox>
+
+                <m:HBox class="sapUiTinyMarginBottom">
+                    <core:Icon src="sap-icon://email" />
+                    <m:Link
+                        text="andrei@asabau.com"
+                        class="sapUiSmallMarginBegin"
+                    />
+                </m:HBox>
+
+                <m:HBox class="sapUiTinyMarginBottom">
+                    <core:Icon src="sap-icon://internet-browser" />
+                    <m:Link
+                        target="_blank"
+                        text="asabau.com"
+                        href="https://asabau.com"
+                        class="sapUiSmallMarginBegin"
+                    />
+                </m:HBox>
+            </m:VBox>
+
+            <m:VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+                <m:Title
+                    text="External Resources"
+                    class="sapUiTinyMarginBottom"
+                />
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom sapUiSmallMarginEnd"
+                    renderType="Bare"
+                >
+                    <m:Image
+                        src="assets/icon/linkedin.svg"
+                        height="20px"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Link
+                        target="_blank"
+                        text="linkedin.com/in/asabau/"
+                        href="https://www.linkedin.com/in/asabau/"
+                    />
+                </m:HBox>
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Image
+                        src="assets/icon/github.svg"
+                        height="20px"
+                        class="sapUiTinyMarginEnd"
+                    />
+
+                    <m:VBox>
+                        <m:Link
+                            target="_blank"
+                            text="github.com/get-set-fetch"
+                            href="https://github.com/get-set-fetch"
+                        />
+
+                        <m:Link
+                            target="_blank"
+                            text="github.com/a1sabau"
+                            href="https://github.com/a1sabau"
+                        />
+                    </m:VBox>
+                </m:HBox>
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Image
+                        src="assets/icon/google-scholar.svg"
+                        height="20px"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Link
+                        target="_blank"
+                        text="scholar.google.com/citations"
+                        href="https://scholar.google.com/citations?hl=en&amp;user=8zptmaEAAAAJ"
+                    />
+                </m:HBox>
+            </m:VBox>
+
+            <m:VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+                <m:Title
+                    id="idAboutThisPageTitle"
+                    text="About This Page"
+                    class="sapUiTinyMarginBottom"
+                />
+
+                <m:Title
+                    id="idAboutThisCVTitle"
+                    text="About This CV"
+                    class="sapUiTinyMarginBottom"
+                />
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Label
+                        text="OData:"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Text text="v2" />
+                </m:HBox>
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Label
+                        text="Backend:"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Text text="SAP CAP (Node.js / Typescript)" />
+                </m:HBox>
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Label
+                        text="Frontend:"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Text text="SAPUI5 (Typescript)" />
+                </m:HBox>
+
+                <m:HBox
+                    class="sapUiTinyMarginBottom"
+                    renderType="Bare"
+                >
+                    <m:Label
+                        text="Source:"
+                        class="sapUiTinyMarginEnd"
+                    />
+                    <m:Link
+                        text="github.com/asabau/cv-generator"
+                        href="https://github.com"
+                    />
+                </m:HBox>
+            </m:VBox>
+        </m:HBox>
+    </m:HeaderContainer>
+</core:FragmentDefinition>
