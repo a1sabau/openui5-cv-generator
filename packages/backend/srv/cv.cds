@@ -9,4 +9,5 @@ service CvService {
   entity Jobs as projection on my.Jobs order by Jobs.startDate desc;
   entity Certifications as projection on my.Certifications order by Certifications.issuedOn desc;
   entity Projects as projection on my.Projects order by Projects.order;
+  entity Tags as projection on my.Tags;
 }

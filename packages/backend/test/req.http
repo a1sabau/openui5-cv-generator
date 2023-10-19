@@ -1,4 +1,12 @@
-GET http://localhost:4004/odata/v4/cv/CvCertifications
+GET http://localhost:4004/odata/v2/browse/Cv(1)/Certifications
+
+###
+
+GET http://localhost:4004/odata/v2/browse/Tags
+
+###
+
+GET http://localhost:4004/odata/v2/browse/Cv(1)/Certifications(parent_ID=1,ID=1)?$expand=tags
 
 ###
 
@@ -11,6 +19,10 @@ GET http://localhost:4004/odata/v4/browse/Cv
 ###
 
 GET http://localhost:4004/odata/v2/browse/Cv(1)/Projects
+
+###
+
+GET http://localhost:4004/odata/v4/browse/Tags
 
 
 
