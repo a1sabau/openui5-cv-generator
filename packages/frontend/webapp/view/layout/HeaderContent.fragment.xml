@@ -42,7 +42,7 @@
                     <m:Link
                         target="_blank"
                         text="asabau.com"
-                        href="https://asabau.com"
+                        href="https://asabau.com/sapui5/"
                         class="sapUiSmallMarginBegin"
                     />
                 </m:HBox>

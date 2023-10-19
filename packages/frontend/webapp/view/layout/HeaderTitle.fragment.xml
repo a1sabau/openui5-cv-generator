@@ -25,7 +25,10 @@
                         text="{fullName}"
                         wrapping="true"
                     />
-                    <m:Label text="{description}" />
+                    <m:Label
+                        text="{description}"
+                        wrapping="true"
+                    />
                 </m:VBox>
             </m:HBox>
         </snappedHeading>
@@ -35,7 +38,7 @@
         </expandedContent>
 
         <snappedTitleOnMobile>
-            <m:Title text="Object Page Header with Header Container" />
+            <m:Title text="{description}" />
         </snappedTitleOnMobile>
 
         <actions>
