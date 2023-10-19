@@ -1,4 +1,5 @@
 <mvc:View
+    xmlns:mdc="sap.ui.mdc"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
@@ -9,7 +10,25 @@
         DateFormatter: 'ui5/cv/model/DateFormatter'
     }"
 >
-    <List items="{path: 'Certifications'}">
+    <Toolbar>
+        <HBox items="{path: 'availableTags>/'}">
+            <CheckBox
+                data:tag="{availableTags>label}"
+                text="{availableTags>label}"
+                selected="{availableTags>selected}"
+                select=".onCheckboxFilterChange"
+            />
+        </HBox>
+    </Toolbar>
+
+    <List
+        id="certificationsList"
+        items="{
+            path: 'Certifications',
+            parameters: { operationMode: 'Client' }
+            
+        }"
+    >
         <CustomListItem>
             <l:Grid
                 class="sapUiSmallMarginTop"
