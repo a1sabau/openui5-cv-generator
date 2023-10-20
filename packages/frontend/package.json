@@ -21,7 +21,9 @@
     "ts-typecheck": "tsc --noEmit",
     "lint": "eslint webapp",
     "test:unit": "karma start karma-ci.conf.js --ui5.testpage webapp/test/unit/unitTests.qunit.html",
+    "test:unit:cov": "karma start karma-ci-cov.conf.js --ui5.testpage webapp/test/unit/unitTests.qunit.html",
     "test:integration": "karma start karma-ci.conf.js --ui5.testpage webapp/test/integration/opaTests.qunit.html",
+    "test:integration:cov": "karma start karma-ci-cov.conf.js --ui5.testpage webapp/test/integration/opaTests.qunit.html",
     "test:all:cov": "karma start karma-ci-cov.conf.js"
   },
   "devDependencies": {
