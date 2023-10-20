@@ -1,12 +1,10 @@
-import { get, IncomingMessage } from 'http'
-import { writeFileSync, readFileSync } from 'fs'
+import { get, IncomingMessage } from 'http';
+import { writeFileSync, readFileSync } from 'fs';
 
 enum ExportFormat {
   JSON = 'json',
   XML = 'xml',
 }
-
-console.log(readFileSync)
 
 const exportEntries: { filename: string; url: string; format: ExportFormat }[] = [
   {
@@ -39,70 +37,69 @@ const exportEntries: { filename: string; url: string; format: ExportFormat }[] =
     url: 'http://localhost:4004/odata/v2/browse/Cv(1)/Projects',
     format: ExportFormat.JSON,
   },
-]
+  {
+    filename: 'Tags.json',
+    url: 'http://localhost:4004/odata/v2/browse/Tags',
+    format: ExportFormat.JSON,
+  },
+];
 
-;(async () => {
+(async () => {
   for (const exportEntry of exportEntries) {
-    const { filename } = exportEntry
+    const { filename } = exportEntry;
 
-    console.log('saving', filename)
-    const rawData = await getJSON(exportEntry.url)
+    console.log('saving', filename);
+    const rawData = await getJSON(exportEntry.url);
 
-    let content: string
+    let content: string;
 
     // json format handling
     if (exportEntry.format === ExportFormat.JSON) {
-      const data = JSON.parse(rawData)
+      const data = JSON.parse(rawData);
       // depending on the odate v2 query we may get an object or an array
-      content = JSON.stringify(data.d.results || [data.d], null, 2)
+      content = JSON.stringify(data.d.results || [data.d], null, 2);
     }
     // xml format handling
     else {
-      content = rawData
+      content = rawData;
     }
 
-    const parentPath = '../frontend/webapp/localService'
-    const fullPath = filename.endsWith('.xml') ? `${parentPath}/metadata.xml` : `${parentPath}/mockdata/${filename}`
+    const parentPath = '../frontend/webapp/localService';
+    const fullPath = filename.endsWith('.xml') ? `${parentPath}/metadata.xml` : `${parentPath}/mockdata/${filename}`;
 
-    writeFileSync(fullPath, content, { encoding: 'utf8' })
-    console.log('DONE')
+    writeFileSync(fullPath, content, { encoding: 'utf8' });
+    console.log('DONE');
   }
-  // await exportEntries.map(async (exportEntry) => {
-  //   console.log('saving', exportEntry.filename)
-  //   const data = await getJSON(exportEntry.url)
-  //   console.log('data', data)
-  //   console.log('DONE')
-  // })
 
-  console.log('export complete')
-})()
+  console.log('export complete');
+})();
 
 function getJSON(url: string): Promise<any> {
   const result = new Promise((resolve, reject) => {
     get(url, (res: IncomingMessage) => {
-      const { statusCode } = res
+      const { statusCode } = res;
 
       // Any 2xx status code signals a successful response but
       // here we're only checking for 200.
       if (statusCode !== 200) {
-        reject(new Error('Request Failed.\n' + `Status Code: ${statusCode}`))
-        return
+        reject(new Error('Request Failed.\n' + `Status Code: ${statusCode}`));
+        return;
       }
 
-      res.setEncoding('utf8')
-      let rawData = ''
+      res.setEncoding('utf8');
+      let rawData = '';
       res.on('data', (chunk) => {
-        rawData += chunk
-      })
+        rawData += chunk;
+      });
       res.on('end', () => {
         try {
-          resolve(rawData)
+          resolve(rawData);
         } catch (e) {
-          reject(e)
+          reject(e);
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
-  return result
+  return result;
 }
