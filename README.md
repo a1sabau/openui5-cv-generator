@@ -1,5 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/a1sabau/openui5-cv-generator%20)
-[![Build Status](https://github.com/a1sabau/openui5-cv-generator/workflows/Tests/badge.svg)](https://github.com/a1sabau/openui5-cv-generator/actions?query=workflow%3Tests)
+[![Build Status](https://github.com/a1sabau/openui5-cv-generator/workflows/Tests/badge.svg)](https://github.com/a1sabau/openui5-cv-generator/actions?query=workflow%3ATests)
 [![Coverage Status](https://coveralls.io/repos/github/a1sabau/openui5-cv-generator/badge.svg?branch=main)](https://coveralls.io/github/a1sabau/openui5-cv-generator?branch=main)
 
 ## OpenUI5 Curriculum Vitae Generator
