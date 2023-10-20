@@ -1,4 +1,4 @@
-name: audit
+name: Audit
 on: [push, pull_request]
 
 jobs:
