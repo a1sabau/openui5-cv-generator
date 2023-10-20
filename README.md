@@ -23,7 +23,7 @@ npm start
 ```
 
 One cds entity per CV section. Definitions compatible with both OData v2 and v4.
-Starts on port `4040``, contains the [odata-v2-adapter](https://github.com/cap-js-community/odata-v2-adapter) so that the generated CV can be deployed as static html files and mocked data json files as only OData v2 calls can be mocked client side.
+Starts on port `4040`, contains the [odata-v2-adapter](https://github.com/cap-js-community/odata-v2-adapter) so that the generated CV can be deployed as static html files and mocked data json files as only OData v2 calls can be mocked client side.
 
 ### Start frontend
 
