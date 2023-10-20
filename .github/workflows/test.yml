@@ -61,12 +61,12 @@ jobs:
       - name: Run integration tests
         run: npm run test:integration:cov -w ./packages/frontend
 
-       - name: Coveralls
+      - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: Frontend Integration Tests
-          parallel: true 
+          parallel: true
 
   coverage:
     name: Coverage
