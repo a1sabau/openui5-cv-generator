@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/a1sabau/openui5-cv-generator/badge.svg?branch=main)](https://coveralls.io/github/a1sabau/openui5-cv-generator?branch=main)
+
 ## OpenUI5 Curriculum Vitae Generator
 
 Generate HTML and PDF versions of your CV with a SAPUI5 style look using SAP OpenUI5 components. \
