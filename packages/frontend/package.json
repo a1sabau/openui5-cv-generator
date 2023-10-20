@@ -20,10 +20,9 @@
     "start:dist-cdn": "npm run start-cdn -- --config ui5-dist.yaml",
     "ts-typecheck": "tsc --noEmit",
     "lint": "eslint webapp",
-    "karma": "karma start",
-    "karma-ci": "karma start karma-ci.conf.js",
-    "karma-ci-cov": "karma start karma-ci-cov.conf.js",
-    "test": "npm run lint && npm run karma-ci-cov"
+    "test:unit": "karma start karma-ci.conf.js --ui5.testpage webapp/test/unit/unitTests.qunit.html",
+    "test:integration": "karma start karma-ci.conf.js --ui5.testpage webapp/test/integration/opaTests.qunit.html",
+    "test:all:cov": "karma start karma-ci-cov.conf.js"
   },
   "devDependencies": {
     "@openui5/types": "1.119.0",

@@ -33,6 +33,7 @@ mta_archives/
 dist/
 bundle/
 out/
+coverage/
 
 *.txt
 pdf/
