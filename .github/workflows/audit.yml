@@ -1,0 +1,15 @@
+name: audit
+on: [push, pull_request]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: NPM Audit
+        run: npm audit --audit-level=high
