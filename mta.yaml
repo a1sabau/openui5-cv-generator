@@ -1,0 +1,145 @@
+_schema-version: '3.2'
+ID: ui5-cv-gen
+version: 0.0.1
+
+parameters:
+  deploy_mode: html5-repo
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx -w packages/backend rimraf gen
+        - npx -w packages/backend cds build --production
+
+modules:
+  - name: ui5-cv-gen-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: ui5-cv-gen-destination-service
+        parameters:
+          content-target: true
+      - name: ui5-cv-gen_html_repo_host
+        parameters:
+          service-key:
+            name: ui5-cv-gen_html_repo_host-key
+      - name: ui5-cv-gen-uaa
+        parameters:
+          service-key:
+            name: ui5-cv-gen-uaa-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: approuter_mta_2_html_repo_host
+              ServiceInstanceName: ui5-cv-gen-html5-app-host-service
+              ServiceKeyName: ui5-cv-gen_html_repo_host-key
+              sap.cloud.service: approuter
+            - Authentication: OAuth2UserTokenExchange
+              Name: approuter_uaa_mta_2
+              ServiceInstanceName: ui5-cv-gen-xsuaa-service
+              ServiceKeyName: ui5-cv-gen-uaa-key
+              sap.cloud.service: approuter
+          existing_destinations_policy: ignore
+    build-parameters:
+      no-source: true
+  - name: ui5-cv-gen-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: ui5-cv-gen_html_repo_host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            # - mta2app1.zip
+            - ui5-cv-gen-app-display.zip
+          name: ui5-cv-gen-app-display
+          target-path: resources/
+  # - name: mta2app1
+  - name: ui5-cv-gen-app-display
+    type: html5
+    path: packages/frontend
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+
+  - name: ui5-cv-gen-backend
+    type: nodejs
+    path: packages/backend/gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: ui5-cv-gen-uaa
+      - name: ui5-cv-gen-db
+
+  - name: ui5-cv-gen-db-deployer
+    type: hdb
+    path: packages/backend/gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: ui5-cv-gen-db
+
+resources:
+  - name: ui5-cv-gen-destination-service
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: srv-api
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
+              - Name: ui5-cv-gen-backend-api
+                Description: CAP APi backend
+                Authentication: NoAuthentication
+                # Authentication: OAuth2UserTokenExchange
+                ProxyType: Internet
+                Type: HTTP
+                URL: ~{srv-api/srv-url}
+                HTML5.DynamicDestination: true
+                HTML5.ForwardAuthToken: true
+            existing_destinations_policy: update
+        version: 1.0.0
+      service: destination
+      service-name: ui5-cv-gen-destination-service
+      service-plan: lite
+  - name: ui5-cv-gen_html_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: ui5-cv-gen-html5-app-host-service
+      service-plan: app-host
+
+  - name: ui5-cv-gen-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: ui5-cv-gen-xsuaa-service
+      service-plan: application
+
+  - name: ui5-cv-gen-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

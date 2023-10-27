@@ -12,10 +12,22 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/browse/",
+        "uri": "odata/v2/browse/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Cv-display": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Cv",
+          "action": "display"
         }
       }
     }
@@ -99,5 +111,9 @@
         }
       }
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "approuter"
   }
 }
