@@ -5,11 +5,15 @@
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.11.7",
     "@sap/cds": "^7",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^3",
+    "passport": "^0",
+    "@sap/cds-hana": "^2"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@types/node": "^20.8.4"
+    "@types/node": "^20.8.4",
+    "@sap/cds-dk": "^7"
   },
   "scripts": {
     "schema:show": "cds-ts compile srv/cv --to sql",
