@@ -32,7 +32,7 @@ entity Cv {
     linkedInUrl: String(200);
     githubUrl: String(200);
     imageUrl: String(200);
-    about: String(400);
+    about: String(1500);
 
     Certifications : Composition of many Certifications on Certifications.parent = $self;
     Projects : Composition of many Projects on Projects.parent = $self;
@@ -64,7 +64,7 @@ entity Certifications {
     key ID: UInt8;
 
     title: String(200);
-    description: String(400);
+    description: String(1500);
     issuedBy: String(200);
     issuedOn: Date;
     link: String(200);
@@ -100,7 +100,7 @@ entity Tags {
 entity Projects {
     key parent : Association to Cv;
     key title: String(200);
-    description: String(400);
+    description: String(1500);
     links: String(200);
     order: UInt8;
 }
@@ -109,7 +109,7 @@ entity Degrees {
     key parent : Association to Cv;
     key school: String(200);
     key name: String(200);
-    description: String(400);
+    description: String(1500);
     startYear: String(4);
     endYear: String(4);
 }
@@ -118,7 +118,7 @@ entity Jobs {
     key parent : Association to Cv;
     key company: String(200);
     key title: String(200);
-    description: String(400);
+    description: String(1500);
     startDate: Date;
     endDate: Date;
 }

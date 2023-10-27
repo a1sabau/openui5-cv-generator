@@ -1,4 +1,4 @@
-parent_ID;ID;title;description;issuedBy;issuedOn;link;tags;
+parent_ID;ID;title;description;issuedBy;issuedOn;link;tags
 1;1;AWS Certified Developer - Associate;Develop and secure applications by using AWS service APIs, the AWS CLI, and SDKs. Use a CI/CD pipeline to deploy applications on AWS.;AWS (Amazon Web Services);2023-05-01;https://www.credly.com/badges/3548ae4e-0696-4e7a-b920-1b2e92341564/public_url;Cloud
 1;2;Sun Certified Associate;Java Implementation of Object-Oriented Concepts, Algorithm Design and Implementation, Java Development Fundamentals, Java Platforms and Integration Technologies, Java Client Technologies, Java Server Technologies.;Sun Microsystems;2010-07-01;;Java
 1;3;Sun Certified Programmer;API Contents, Flow Control, Declarations, Initialization and Scoping, OO Concepts, Concurrency, Collections / Generics.;Sun Microsystems;2010-08-01;;Java
