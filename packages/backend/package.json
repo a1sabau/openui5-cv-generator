@@ -1,6 +1,7 @@
 {
-  "name": "ui5-cv-generator-backend",
+  "name": "openui5-cv-generator-backend",
   "version": "1.0.0",
+  "author": "Andrei Sabau",
   "license": "Apache-2.0",
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.11.7",
