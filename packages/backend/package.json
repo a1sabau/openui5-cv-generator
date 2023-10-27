@@ -16,19 +16,10 @@
     "@sap/cds-dk": "^7"
   },
   "scripts": {
+    "start": "cds-serve",
+    "watch": "cds-ts watch",
     "schema:show": "cds-ts compile srv/cv --to sql",
-    "start": "cds-ts watch",
-    "export": "ts-node srv/utils/export.ts"
-  },
-  "cds_ignore": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "url": "./db.sqlite"
-        }
-      }
-    }
+    "export:odata": "ts-node srv/utils/export.ts"
   },
   "cds": {
     "cov2ap": {

@@ -10,6 +10,11 @@
     "typescript": "^5.1.6",
     "mbt": "^1.2.18"
   },
+  "scripts": {
+    "clean": "rimraf resources mta_archives mta-op*",
+    "build": "npm run clean && mbt build --mtar ui5-cv-gen",
+    "deploy": "cf deploy mta_archives/ui5-cv-gen.mtar --retries 1",
+    "undeploy": "cf undeploy ui5-cv-gen --delete-services --delete-service-keys --delete-service-brokers"
   },
   "workspaces": [
     "packages/backend",
