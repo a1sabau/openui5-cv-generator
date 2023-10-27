@@ -25,7 +25,7 @@ server:
       afterMiddleware: compression
     - name: ui5-middleware-simpleproxy
       afterMiddleware: compression
-      mountPath: /browse
+      mountPath: /odata
       configuration:
-        baseUri: 'http://localhost:4004/odata/v2/browse'
+        baseUri: 'http://localhost:4004/odata'
         strictSSL: false
