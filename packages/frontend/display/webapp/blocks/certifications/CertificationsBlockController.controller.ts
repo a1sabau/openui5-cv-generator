@@ -14,7 +14,7 @@ type UITag = Tag & {
 const TAG_ALL = 'All';
 
 /**
- * @namespace ui5.cv.blocks.certifications
+ * @namespace ui5.cv.display.blocks.certifications
  */
 export default abstract class CertificationsBlockController extends Controller {
   private usedTagsModel: JSONModel;

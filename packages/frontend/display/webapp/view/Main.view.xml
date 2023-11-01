@@ -1,14 +1,14 @@
 <mvc:View
-    controllerName="ui5.cv.controller.Main"
+    controllerName="ui5.cv.display.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.uxap"
     xmlns:m="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns:certifications="ui5.cv.blocks.certifications"
-    xmlns:projects="ui5.cv.blocks.projects"
-    xmlns:education="ui5.cv.blocks.education"
-    xmlns:experience="ui5.cv.blocks.experience"
-    xmlns:about="ui5.cv.blocks.about"
+    xmlns:certifications="ui5.cv.display.blocks.certifications"
+    xmlns:projects="ui5.cv.display.blocks.projects"
+    xmlns:education="ui5.cv.display.blocks.education"
+    xmlns:experience="ui5.cv.display.blocks.experience"
+    xmlns:about="ui5.cv.display.blocks.about"
     height="100%"
 >
     <ObjectPageLayout
@@ -18,14 +18,14 @@
     >
         <headerTitle>
             <core:Fragment
-                fragmentName="ui5.cv.view.layout.HeaderTitle"
+                fragmentName="ui5.cv.display.view.layout.HeaderTitle"
                 type="XML"
             />
         </headerTitle>
 
         <headerContent>
             <core:Fragment
-                fragmentName="ui5.cv.view.layout.HeaderContent"
+                fragmentName="ui5.cv.display.view.layout.HeaderContent"
                 type="XML"
             />
         </headerContent>

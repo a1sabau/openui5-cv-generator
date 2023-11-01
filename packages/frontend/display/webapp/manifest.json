@@ -2,7 +2,7 @@
   "_version": "1.12.0",
 
   "sap.app": {
-    "id": "ui5.cv",
+    "id": "ui5.cv.display",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "title": "{{appTitle}}",
@@ -45,7 +45,7 @@
 
   "sap.ui5": {
     "rootView": {
-      "viewName": "ui5.cv.view.App",
+      "viewName": "ui5.cv.display.view.App",
       "type": "XML",
       "async": true,
       "id": "app"
@@ -92,7 +92,7 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
-        "viewPath": "ui5.cv.view",
+        "viewPath": "ui5.cv.display.view",
         "controlId": "app",
         "controlAggregation": "pages",
         "async": true

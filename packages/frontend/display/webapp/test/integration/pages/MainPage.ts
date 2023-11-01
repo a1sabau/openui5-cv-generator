@@ -1,6 +1,6 @@
 import Opa5 from 'sap/ui/test/Opa5';
 
-const viewName = 'ui5.cv.view.Main';
+const viewName = 'ui5.cv.display.view.Main';
 
 export default class MainPage extends Opa5 {
   iShouldSeeTheAvatar() {

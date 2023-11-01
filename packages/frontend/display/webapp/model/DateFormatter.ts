@@ -1,5 +1,5 @@
 /**
- * @namespace ui5.cv.model
+ * @namespace ui5.cv.display.model
  */
 export default class DateFormatter {
   public static formatInterval(startDate: Date, endDate: Date): string {

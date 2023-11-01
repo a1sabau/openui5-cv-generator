@@ -10,7 +10,7 @@ opaTest('Header', function () {
   // Arrangements
   onTheMainPage.iStartMyUIComponent({
     componentConfig: {
-      name: 'ui5.cv',
+      name: 'ui5.cv.display',
     },
   });
 

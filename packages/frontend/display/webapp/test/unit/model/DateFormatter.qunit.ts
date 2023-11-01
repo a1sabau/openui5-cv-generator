@@ -1,4 +1,4 @@
-import DateFormatter from 'ui5/cv/model/DateFormatter';
+import DateFormatter from 'ui5/cv/display/model/DateFormatter';
 
 QUnit.module('DateFormatter');
 

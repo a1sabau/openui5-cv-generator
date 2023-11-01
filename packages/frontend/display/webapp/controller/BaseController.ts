@@ -8,7 +8,7 @@ import Router from 'sap/ui/core/routing/Router';
 import History from 'sap/ui/core/routing/History';
 
 /**
- * @namespace ui5.cv.controller
+ * @namespace ui5.cv.display.controller
  */
 export default abstract class BaseController extends Controller {
   /**

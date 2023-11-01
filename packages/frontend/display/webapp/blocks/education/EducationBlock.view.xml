@@ -3,7 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
-    xmlns:controls="ui5.cv.controls"
+    xmlns:controls="ui5.cv.display.controls"
 >
     <List items="{path: 'Degrees'}">
         <CustomListItem>

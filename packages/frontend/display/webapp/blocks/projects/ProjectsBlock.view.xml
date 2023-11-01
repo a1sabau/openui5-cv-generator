@@ -3,8 +3,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
-    xmlns:controls="ui5.cv.controls"
-    controllerName="ui5.cv.blocks.projects.ProjectsBlockController"
+    xmlns:controls="ui5.cv.display.controls"
+    controllerName="ui5.cv.display.blocks.projects.ProjectsBlockController"
 >
     <List items="{path: 'Projects'}">
         <CustomListItem>

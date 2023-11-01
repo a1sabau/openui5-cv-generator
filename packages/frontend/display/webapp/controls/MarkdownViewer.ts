@@ -11,7 +11,7 @@ interface IMarkdownViewer {
 }
 
 /**
- * @namespace ui5.cv.controls
+ * @namespace ui5.cv.display.controls
  */
 export default class MarkdownViewer extends Control {
   static readonly metadata: MetadataOptions = {

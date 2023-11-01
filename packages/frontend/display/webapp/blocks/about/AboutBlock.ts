@@ -1,15 +1,15 @@
 import ViewType from 'sap/ui/core/mvc/ViewType';
 import BlockBase from 'sap/uxap/BlockBase';
 
-export default BlockBase.extend('ui5.cv.blocks.about.AboutBlock', {
+export default BlockBase.extend('ui5.cv.display.blocks.about.AboutBlock', {
   metadata: {
     views: {
       Collapsed: {
-        viewName: 'ui5.cv.blocks.about.AboutBlock',
+        viewName: 'ui5.cv.display.blocks.about.AboutBlock',
         type: ViewType.XML,
       },
       Expanded: {
-        viewName: 'ui5.cv.blocks.about.AboutBlock',
+        viewName: 'ui5.cv.display.blocks.about.AboutBlock',
         type: ViewType.XML,
       },
     },

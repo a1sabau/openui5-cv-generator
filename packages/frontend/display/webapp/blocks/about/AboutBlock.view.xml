@@ -1,7 +1,7 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:controls="ui5.cv.controls"
+    xmlns:controls="ui5.cv.display.controls"
 >
     <HBox>
         <controls:MarkdownViewer

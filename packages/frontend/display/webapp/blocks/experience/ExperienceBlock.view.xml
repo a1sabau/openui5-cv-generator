@@ -3,9 +3,9 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
-    xmlns:controls="ui5.cv.controls"
+    xmlns:controls="ui5.cv.display.controls"
     core:require="{
-        DateFormatter: 'ui5/cv/model/DateFormatter'
+        DateFormatter: 'ui5/cv/display/model/DateFormatter'
     }"
 >
     <List

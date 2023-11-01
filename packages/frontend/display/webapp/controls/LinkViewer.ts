@@ -9,7 +9,7 @@ interface ILinkViewer {
 }
 
 /**
- * @namespace ui5.cv.controls
+ * @namespace ui5.cv.display.controls
  */
 export default class LinkViewer extends Control {
   static readonly metadata: MetadataOptions = {

@@ -3,7 +3,7 @@ import MockServer from 'sap/ui/core/util/MockServer';
 import Log from 'sap/base/Log';
 
 /**
- * @namespace ui5.cv.controller
+ * @namespace ui5.cv.display.controller
  */
 export default class App extends BaseController {
   public onInit(): void {

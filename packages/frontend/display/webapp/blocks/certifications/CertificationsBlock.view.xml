@@ -4,9 +4,9 @@
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-    controllerName="ui5.cv.blocks.certifications.CertificationsBlockController"
+    controllerName="ui5.cv.display.blocks.certifications.CertificationsBlockController"
     core:require="{
-        DateFormatter: 'ui5/cv/model/DateFormatter'
+        DateFormatter: 'ui5/cv/display/model/DateFormatter'
     }"
 >
     <Toolbar>

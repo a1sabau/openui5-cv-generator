@@ -1,4 +1,4 @@
-import Main from 'ui5/cv/controller/Main.controller';
+import Main from 'ui5/cv/display/controller/Main.controller';
 
 QUnit.module('Main controller');
 
