@@ -1,3 +1,4 @@
+import { URLHelper } from 'sap/m/library';
 import BaseController from './BaseController';
 
 /**
@@ -5,10 +6,10 @@ import BaseController from './BaseController';
  */
 export default class Main extends BaseController {
   public onInit(): void {
-    this.getView()?.bindElement({ path: `/Cv(1)` });
+    this.getView()?.bindElement({ path: '/Cv(1)' });
   }
 
   public switchToNextjsCV(): void {
-    window.location.href = '/';
+    URLHelper.redirect('/');
   }
 }

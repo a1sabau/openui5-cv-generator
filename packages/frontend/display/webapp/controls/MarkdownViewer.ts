@@ -2,7 +2,6 @@ import type { MetadataOptions } from 'sap/ui/core/Element';
 import RenderManager from 'sap/ui/core/RenderManager';
 import HTML from 'sap/ui/core/HTML';
 import Control from 'sap/ui/core/Control';
-import HBox from 'sap/m/HBox';
 import Grid from 'sap/ui/layout/Grid';
 import GridData from 'sap/ui/layout/GridData';
 
@@ -25,7 +24,9 @@ export default class MarkdownViewer extends Control {
   static renderer = {
     apiVersion: 2,
     render: function (rm: RenderManager, control: MarkdownViewer & IMarkdownViewer) {
-      if (!control.getContent()) return;
+      if (!control.getContent()) {
+        return;
+      }
 
       rm.class('ui5_cv_spacious');
       rm.openStart('div', control);

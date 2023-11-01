@@ -1,8 +1,8 @@
-import UIComponent from 'sap/ui/core/UIComponent'
-import models from './model/models'
-import Device from 'sap/ui/Device'
-import MockServer from 'sap/ui/core/util/MockServer'
-import Log from 'sap/base/Log'
+import UIComponent from 'sap/ui/core/UIComponent';
+import models from './model/models';
+import Device from 'sap/ui/Device';
+import MockServer from 'sap/ui/core/util/MockServer';
+import Log from 'sap/base/Log';
 
 /**
  * @namespace ui5.cv
@@ -10,21 +10,21 @@ import Log from 'sap/base/Log'
 export default class Component extends UIComponent {
   public static metadata = {
     manifest: 'json',
-  }
+  };
 
-  private contentDensityClass: string
+  private contentDensityClass: string;
 
   public init(): void {
     // this.runMockServer()
 
     // call the base component's init function
-    super.init()
+    super.init();
 
     // create the device model
-    this.setModel(models.createDeviceModel(), 'device')
+    this.setModel(models.createDeviceModel(), 'device');
 
     // create the views based on the url/hash
-    this.getRouter().initialize()
+    this.getRouter().initialize();
   }
 
   /**
@@ -37,35 +37,35 @@ export default class Component extends UIComponent {
     if (this.contentDensityClass === undefined) {
       // check whether FLP has already set the content density class; do nothing in this case
       if (document.body.classList.contains('sapUiSizeCozy') || document.body.classList.contains('sapUiSizeCompact')) {
-        this.contentDensityClass = ''
+        this.contentDensityClass = '';
       } else if (!Device.support.touch) {
         // apply "compact" mode if touch is not supported
-        this.contentDensityClass = 'sapUiSizeCompact'
+        this.contentDensityClass = 'sapUiSizeCompact';
       } else {
         // "cozy" in case of touch support; default for most sap.m controls, but needed for desktop-first controls like sap.ui.table.Table
-        this.contentDensityClass = 'sapUiSizeCozy'
+        this.contentDensityClass = 'sapUiSizeCozy';
       }
     }
-    return this.contentDensityClass
+    return this.contentDensityClass;
   }
 
   public runMockServer(): void {
-    console.log('runMockServer')
+    console.log('runMockServer');
 
     // create
     var oMockServer = new MockServer({
       rootUri: '/browse/',
-    })
+    });
 
     // simulate against the metadata and mock data
     oMockServer.simulate('./localService/metadata.xml', {
       sMockdataBaseUrl: './localService/mockdata',
       bGenerateMissingMockData: true,
-    })
+    });
 
     // start
-    oMockServer.start()
+    oMockServer.start();
 
-    Log.info('Running the app with mock data')
+    Log.info('Running the app with mock data');
   }
 }

@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
@@ -7,12 +8,19 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@sap-ux/eslint-plugin-fiori-tools/defaultTS"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": ["./tsconfig.json"],
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"]
+  "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["*.js"],
+  "rules": {
+    "quotes": ["error", "single"],
+    "comma-dangle": ["error", "always-multiline"],
+    "curly": ["error", "all"]
+  }
 }

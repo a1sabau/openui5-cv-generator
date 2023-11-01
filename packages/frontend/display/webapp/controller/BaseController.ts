@@ -48,8 +48,8 @@ export default abstract class BaseController extends Controller {
   /**
    * Convenience method for setting the view model in every controller of the application.
    * @param oModel The model instance
-   * @param [sName] The model name
-   * @returns The current base controller instance
+   * @param sName The model name
+   * @returns {BaseController} The current base controller instance
    */
   public setModel(oModel: Model, sName?: string): BaseController {
     this.getView().setModel(oModel, sName);

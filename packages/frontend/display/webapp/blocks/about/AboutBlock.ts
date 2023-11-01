@@ -1,5 +1,5 @@
-import ViewType from 'sap/ui/core/mvc/ViewType'
-import BlockBase from 'sap/uxap/BlockBase'
+import ViewType from 'sap/ui/core/mvc/ViewType';
+import BlockBase from 'sap/uxap/BlockBase';
 
 export default BlockBase.extend('ui5.cv.blocks.about.AboutBlock', {
   metadata: {
@@ -14,4 +14,4 @@ export default BlockBase.extend('ui5.cv.blocks.about.AboutBlock', {
       },
     },
   },
-})
+});

@@ -6,12 +6,12 @@ export default class DateFormatter {
     const dateIntervalVals = [
       startDate.toLocaleString(undefined, { year: 'numeric', month: '2-digit' }),
       endDate.toLocaleString(undefined, { year: 'numeric', month: '2-digit' }),
-    ]
+    ];
 
-    return dateIntervalVals.join(' - ')
+    return dateIntervalVals.join(' - ');
   }
 
   public static formatDate(date: Date): string {
-    return date.toLocaleString(undefined, { year: 'numeric', month: '2-digit' })
+    return date.toLocaleString(undefined, { year: 'numeric', month: '2-digit' });
   }
 }
