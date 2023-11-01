@@ -1,8 +1,11 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true
+    "es6": true
+  },
+  "globals": {
+    "sap": true,
+    "jQuery": true
   },
   "extends": [
     "eslint:recommended",
