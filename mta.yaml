@@ -11,6 +11,7 @@ build-parameters:
       commands:
         - npx -w packages/backend rimraf gen
         - npx -w packages/backend cds build --production
+        - npm run generate:types -w packages/backend
 
 modules:
   - name: ui5-cv-gen-destination-content

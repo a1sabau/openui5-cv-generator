@@ -13,7 +13,12 @@
         "strict": true,
         "strictNullChecks": false,
         "strictPropertyInitialization": false,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "paths": {
+            "#cds-models/*": [
+                "./@cds-models/*/index.ts"
+            ]
+        }
     },
     "include": [
         "./srv/**/*"

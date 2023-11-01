@@ -14,17 +14,22 @@
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@types/node": "^20.8.4",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "@cap-js/cds-typer": "^0"
   },
   "scripts": {
     "start": "cds-serve",
     "watch": "cds-ts watch",
     "schema:show": "cds-ts compile srv/cv --to sql",
-    "export:odata": "ts-node srv/utils/export.ts"
+    "export:odata": "ts-node srv/utils/export.ts",
+    "generate:types": "cds-typer db/schema.cds --outputDirectory @cds-models"
   },
   "cds": {
     "cov2ap": {
       "plugin": true
     }
+  },
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
   }
 }

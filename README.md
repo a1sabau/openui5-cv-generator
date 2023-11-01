@@ -37,12 +37,18 @@ Monitors changes, available under `localhost:4004/`. Contains the [odata-v2-adap
 
 ### Start OpenUI5 frontend
 
+Generate typescript types based on backend cds
+
+```
+npm run -w packages/backend generate:types
+```
+
+Monitors changes, available under `localhost:8080/index.html`.
+
 ```
 cd packages/frontend/display
 npm start
 ```
-
-Monitors changes, available under `localhost:8080/index.html`.
 
 Under the `Cv` semantic object, the sapui5 app linked to the `display` action uses OData v2 to load the corresponding data. Because v2 can be mocked on client side, the project offers the possibility to bundle the `Cv-display` app in just html, js and css files with OData v2 content exported as json files. In this standalone mode you can interact with the app without hosting a CAP backend.
 
