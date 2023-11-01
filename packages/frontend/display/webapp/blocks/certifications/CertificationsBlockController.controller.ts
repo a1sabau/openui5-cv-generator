@@ -5,7 +5,6 @@ import ODataModel from 'sap/ui/model/odata/v2/ODataModel';
 import { Certification, Tag } from 'openui5-cv-generator-backend/@cds-models/ui5/generator/';
 import { CheckBox$SelectEvent } from 'sap/m/CheckBox';
 import { Button$PressEvent } from 'sap/m/Button';
-import List from 'sap/m/List';
 import JSONListBinding from 'sap/ui/model/json/JSONListBinding';
 
 type UITag = Tag & {
@@ -90,7 +89,7 @@ export default abstract class CertificationsBlockController extends Controller {
   }
 
   private filterByTag() {
-    const certificationListEl = this.getView().byId('certificationsList') as List;
+    const certificationListEl = this.getView().byId('certificationsList');
 
     const selectedTags = (this.usedTagsModel.getData() as UITag[])
       .filter((tag: UITag) => tag.selected)
