@@ -64,7 +64,7 @@ const exportEntries: { filename: string; url: string; format: ExportFormat }[] =
       content = rawData;
     }
 
-    const parentPath = '../frontend/webapp/localService';
+    const parentPath = '../frontend/display/webapp/localService';
     const fullPath = filename.endsWith('.xml') ? `${parentPath}/metadata.xml` : `${parentPath}/mockdata/${filename}`;
 
     writeFileSync(fullPath, content, { encoding: 'utf8' });

@@ -27,17 +27,17 @@ jobs:
         run: npm ci
 
       # - name: Lint check
-      #   run: npm run lint -w ./packages/frontend
+      #   run: npm run lint -w ./packages/frontend/display
 
       - name: Run unit tests
-        run: npm run test:unit:cov -w ./packages/frontend
+        run: npm run test:unit:cov -w ./packages/frontend/display
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: Frontend Unit Tests
-          file: ./packages/frontend/coverage/lcov.info
+          file: ./packages/frontend/display/coverage/lcov.info
           parallel: true
 
   frontend-acceptance-test:
@@ -66,7 +66,7 @@ jobs:
         run: npm ci
 
       - name: Run integration tests
-        run: npm run test:integration:cov -w ./packages/frontend
+        run: npm run test:integration:cov -w ./packages/display
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2

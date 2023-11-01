@@ -20,7 +20,11 @@ You can deploy the project as a:
 npm ci
 ```
 
-This will install dependencies for all monorepo packages available under `/packages`.
+This will install dependencies for all monorepo packages available under `/packages`:
+
+- /packages/backend
+- /packages/frontend/display
+- /packages/frontend/edit
 
 ### Start CAP backend
 
@@ -34,7 +38,7 @@ Monitors changes, available under `localhost:4004/`. Contains the [odata-v2-adap
 ### Start OpenUI5 frontend
 
 ```
-cd packages/frontend
+cd packages/frontend/display
 npm start
 ```
 
@@ -60,7 +64,7 @@ npm run undeploy
 
 ### Deploy as standalone static application
 
-Export metadata and content from the OData v2 available service points in `/packages/frontend/webapp/localService`. Local CAP backend needs to be available for this to succeed.
+Export metadata and content from the OData v2 available service points in `/packages/frontend/display/webapp/localService`. Local CAP backend needs to be available for this to succeed.
 
 ```
 npm run -w packages/backend export:odata
@@ -69,16 +73,16 @@ npm run -w packages/backend export:odata
 Build UI5 self contained `dist` version.
 
 ```
-npm run -w packages/frontend build:opt
+npm run -w packages/frontend/display build:opt
 ```
 
 Construct a bundle with a subset of `dist`, only the js bundle without individual js files.
 
 ```
-npm run -w packages/frontend build:bundle
+npm run -w packages/frontend/display build:bundle
 ```
 
-Copy the generated `/packages/frontend/bundle` dir to any web server without requiring a CAP backend.
+Copy the generated `/packages/frontend/display/bundle` dir to any web server without requiring a CAP backend.
 
 ### Build a PDF version
 

@@ -61,7 +61,7 @@ modules:
   # - name: mta2app1
   - name: ui5-cv-gen-app-display
     type: html5
-    path: packages/frontend
+    path: packages/frontend/display
     build-parameters:
       build-result: dist
       builder: custom

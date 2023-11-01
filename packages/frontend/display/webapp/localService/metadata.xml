@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="CvService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Cv" EntityType="CvService.Cv"/>
+        <EntitySet Name="Degrees" EntityType="CvService.Degrees"/>
+        <EntitySet Name="Jobs" EntityType="CvService.Jobs"/>
+        <EntitySet Name="Certifications" EntityType="CvService.Certifications"/>
+        <EntitySet Name="Projects" EntityType="CvService.Projects"/>
+        <EntitySet Name="Tags" EntityType="CvService.Tags"/>
+        <AssociationSet Name="Degrees_parent" Association="CvService.Degrees_parent">
+          <End Role="Degrees" EntitySet="Degrees"/>
+          <End Role="Cv" EntitySet="Cv"/>
+        </AssociationSet>
+        <AssociationSet Name="Jobs_parent" Association="CvService.Jobs_parent">
+          <End Role="Jobs" EntitySet="Jobs"/>
+          <End Role="Cv" EntitySet="Cv"/>
+        </AssociationSet>
+        <AssociationSet Name="Certifications_parent" Association="CvService.Certifications_parent">
+          <End Role="Certifications" EntitySet="Certifications"/>
+          <End Role="Cv" EntitySet="Cv"/>
+        </AssociationSet>
+        <AssociationSet Name="Projects_parent" Association="CvService.Projects_parent">
+          <End Role="Projects" EntitySet="Projects"/>
+          <End Role="Cv" EntitySet="Cv"/>
+        </AssociationSet>
+      </EntityContainer>
+      <EntityType Name="Cv">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="firstName" Type="Edm.String" MaxLength="200"/>
+        <Property Name="lastName" Type="Edm.String" MaxLength="200"/>
+        <Property Name="fullName" Type="Edm.String"/>
+        <Property Name="description" Type="Edm.String" MaxLength="400"/>
+        <Property Name="email" Type="Edm.String" MaxLength="200"/>
+        <Property Name="phone" Type="Edm.String" MaxLength="200"/>
+        <Property Name="linkedInUrl" Type="Edm.String" MaxLength="200"/>
+        <Property Name="githubUrl" Type="Edm.String" MaxLength="200"/>
+        <Property Name="imageUrl" Type="Edm.String" MaxLength="200"/>
+        <Property Name="about" Type="Edm.String" MaxLength="1500"/>
+        <NavigationProperty Name="Certifications" Relationship="CvService.Certifications_parent" FromRole="Cv" ToRole="Certifications"/>
+        <NavigationProperty Name="Projects" Relationship="CvService.Projects_parent" FromRole="Cv" ToRole="Projects"/>
+        <NavigationProperty Name="Degrees" Relationship="CvService.Degrees_parent" FromRole="Cv" ToRole="Degrees"/>
+        <NavigationProperty Name="Jobs" Relationship="CvService.Jobs_parent" FromRole="Cv" ToRole="Jobs"/>
+      </EntityType>
+      <EntityType Name="Degrees">
+        <Key>
+          <PropertyRef Name="parent_ID"/>
+          <PropertyRef Name="school"/>
+          <PropertyRef Name="name"/>
+        </Key>
+        <NavigationProperty Name="parent" Relationship="CvService.Degrees_parent" FromRole="Degrees" ToRole="Cv"/>
+        <Property Name="parent_ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="school" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="description" Type="Edm.String" MaxLength="1500"/>
+        <Property Name="startYear" Type="Edm.String" MaxLength="4"/>
+        <Property Name="endYear" Type="Edm.String" MaxLength="4"/>
+      </EntityType>
+      <EntityType Name="Jobs">
+        <Key>
+          <PropertyRef Name="parent_ID"/>
+          <PropertyRef Name="company"/>
+          <PropertyRef Name="title"/>
+        </Key>
+        <NavigationProperty Name="parent" Relationship="CvService.Jobs_parent" FromRole="Jobs" ToRole="Cv"/>
+        <Property Name="parent_ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="company" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="title" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="description" Type="Edm.String" MaxLength="1500"/>
+        <Property Name="startDate" Type="Edm.DateTime" sap:display-format="Date"/>
+        <Property Name="endDate" Type="Edm.DateTime" sap:display-format="Date"/>
+      </EntityType>
+      <EntityType Name="Certifications">
+        <Key>
+          <PropertyRef Name="parent_ID"/>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <NavigationProperty Name="parent" Relationship="CvService.Certifications_parent" FromRole="Certifications" ToRole="Cv"/>
+        <Property Name="parent_ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="title" Type="Edm.String" MaxLength="200"/>
+        <Property Name="description" Type="Edm.String" MaxLength="1500"/>
+        <Property Name="issuedBy" Type="Edm.String" MaxLength="200"/>
+        <Property Name="issuedOn" Type="Edm.DateTime" sap:display-format="Date"/>
+        <Property Name="link" Type="Edm.String" MaxLength="200"/>
+        <Property Name="tags" Type="Edm.String" MaxLength="200"/>
+      </EntityType>
+      <EntityType Name="Projects">
+        <Key>
+          <PropertyRef Name="parent_ID"/>
+          <PropertyRef Name="title"/>
+        </Key>
+        <NavigationProperty Name="parent" Relationship="CvService.Projects_parent" FromRole="Projects" ToRole="Cv"/>
+        <Property Name="parent_ID" Type="Edm.Byte" Nullable="false"/>
+        <Property Name="title" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="description" Type="Edm.String" MaxLength="1500"/>
+        <Property Name="links" Type="Edm.String" MaxLength="200"/>
+        <Property Name="order" Type="Edm.Byte"/>
+      </EntityType>
+      <EntityType Name="Tags">
+        <Key>
+          <PropertyRef Name="name"/>
+        </Key>
+        <Property Name="name" Type="Edm.String" MaxLength="50" Nullable="false"/>
+        <Property Name="order" Type="Edm.Byte"/>
+      </EntityType>
+      <Association Name="Degrees_parent">
+        <End Role="Degrees" Type="CvService.Degrees" Multiplicity="*"/>
+        <End Role="Cv" Type="CvService.Cv" Multiplicity="0..1">
+          <OnDelete Action="Cascade"/>
+        </End>
+        <ReferentialConstraint>
+          <Principal Role="Cv">
+            <PropertyRef Name="ID"/>
+          </Principal>
+          <Dependent Role="Degrees">
+            <PropertyRef Name="parent_ID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Jobs_parent">
+        <End Role="Jobs" Type="CvService.Jobs" Multiplicity="*"/>
+        <End Role="Cv" Type="CvService.Cv" Multiplicity="0..1">
+          <OnDelete Action="Cascade"/>
+        </End>
+        <ReferentialConstraint>
+          <Principal Role="Cv">
+            <PropertyRef Name="ID"/>
+          </Principal>
+          <Dependent Role="Jobs">
+            <PropertyRef Name="parent_ID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Certifications_parent">
+        <End Role="Certifications" Type="CvService.Certifications" Multiplicity="*"/>
+        <End Role="Cv" Type="CvService.Cv" Multiplicity="0..1">
+          <OnDelete Action="Cascade"/>
+        </End>
+        <ReferentialConstraint>
+          <Principal Role="Cv">
+            <PropertyRef Name="ID"/>
+          </Principal>
+          <Dependent Role="Certifications">
+            <PropertyRef Name="parent_ID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="Projects_parent">
+        <End Role="Projects" Type="CvService.Projects" Multiplicity="*"/>
+        <End Role="Cv" Type="CvService.Cv" Multiplicity="0..1">
+          <OnDelete Action="Cascade"/>
+        </End>
+        <ReferentialConstraint>
+          <Principal Role="Cv">
+            <PropertyRef Name="ID"/>
+          </Principal>
+          <Dependent Role="Projects">
+            <PropertyRef Name="parent_ID"/>
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Annotations Target="CvService.Cv/fullName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
