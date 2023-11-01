@@ -34,7 +34,7 @@
                                 class="sapUiTinyMarginBottom"
                                 items="{
                                 path: 'links',
-                                factory: '.productListFactory'
+                                factory: '.projectListFactory'
                                 }"
                             /> -->
                             <controls:LinkViewer links="{links}" />

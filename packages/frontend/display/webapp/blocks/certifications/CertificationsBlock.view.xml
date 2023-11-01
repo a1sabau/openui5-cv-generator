@@ -1,5 +1,4 @@
 <mvc:View
-    xmlns:mdc="sap.ui.mdc"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
@@ -11,11 +10,11 @@
     }"
 >
     <Toolbar>
-        <HBox items="{path: 'availableTags>/'}">
+        <HBox items="{path: 'usedTags>/'}">
             <CheckBox
-                data:tag="{availableTags>label}"
-                text="{availableTags>label}"
-                selected="{availableTags>selected}"
+                data:tagName="{usedTags>name}"
+                text="{usedTags>name}"
+                selected="{usedTags>selected}"
                 select=".onCheckboxFilterChange"
             />
         </HBox>

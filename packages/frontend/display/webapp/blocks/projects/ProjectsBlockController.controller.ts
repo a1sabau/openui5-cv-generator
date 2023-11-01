@@ -5,8 +5,8 @@ import Context from 'sap/ui/model/odata/v4/Context';
 
 // can be used with odata v4, entity Projects {... links: many String(200); ...}
 export default Controller.extend('ui5.cv.blocks.projects.ProjectsBlockController', {
-  productListFactory: function (sId: string, oContext: Context) {
-    const link = oContext.getProperty(undefined);
+  projectListFactory: function (sId: string, oContext: Context) {
+    const link = oContext.getProperty(undefined) as string;
 
     const liEl = new CustomListItem({
       highlight: 'None',

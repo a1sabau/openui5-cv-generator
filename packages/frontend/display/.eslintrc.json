@@ -1,5 +1,4 @@
 {
-  "root": true,
   "env": {
     "browser": true,
     "es6": true,
@@ -13,11 +12,11 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./tsconfig.json"],
+    "project": "tsconfig.json",
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["*.js"],
+  "ignorePatterns": ["*.js", "Component.ts"],
   "rules": {
     "quotes": ["error", "single"],
     "comma-dangle": ["error", "always-multiline"],
