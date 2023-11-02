@@ -55,11 +55,9 @@ modules:
       build-result: resources
       requires:
         - artifacts:
-            # - mta2app1.zip
             - ui5-cv-gen-app-display.zip
           name: ui5-cv-gen-app-display
           target-path: resources/
-  # - name: mta2app1
   - name: ui5-cv-gen-app-display
     type: html5
     path: packages/frontend/display
@@ -67,7 +65,6 @@ modules:
       build-result: dist
       builder: custom
       commands:
-        - npm install
         - npm run build:cf
       supported-platforms: []
 
