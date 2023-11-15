@@ -54,6 +54,10 @@ entity Cv {
     @Common.Label: 'i18n>phone'
     phone: String(200);
 
+    @mandatory
+    @Common.Label: 'i18n>country'
+    country: String(3);
+
     linkedInUrl: String(200);
     githubUrl: String(200);
     imageUrl: String(200);
