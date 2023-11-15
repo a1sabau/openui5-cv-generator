@@ -1,0 +1,71 @@
+<mvc:View
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns:controls="ui5.cv.edit.controls"
+    controllerName="ui5.cv.edit.controller.Main"
+>
+    <tnt:ToolPage id="toolPage">
+        <!-- <tnt:header>
+            <f:ShellBar
+                title="Application Title"
+                secondTitle="Short description"
+            />
+        </tnt:header> -->
+        <tnt:sideContent>
+            <core:Fragment
+                fragmentName="ui5.cv.edit.view.SideNavigation"
+                type="XML"
+            />
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <NavContainer
+                id="pageContainer"
+                initialPage="page2"
+            >
+                <pages>
+                    <ScrollContainer
+                        id="root1"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                    >
+                        <Text text="This is the root page" />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="page1"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                    >
+                        <Text text="This is the first page" />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="page2"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                    >
+                        <core:Fragment
+                            fragmentName="ui5.cv.edit.view.fragments.about.About"
+                            type="XML"
+                        />
+                    </ScrollContainer>
+                    <ScrollContainer
+                        id="root2"
+                        horizontal="false"
+                        vertical="true"
+                        height="100%"
+                    >
+                        <Text
+                            text="This is the root page of the second element"
+                        />
+                    </ScrollContainer>
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

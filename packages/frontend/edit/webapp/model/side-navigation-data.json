@@ -1,0 +1,36 @@
+[
+  {
+    "title": "About",
+    "expanded": true,
+    "items": [
+      {
+        "title": "General Information",
+        "key": "page0"
+      },
+      {
+        "title": "Contact Information",
+        "key": "page1"
+      },
+      {
+        "title": "External Resources",
+        "key": "page2"
+      }
+    ]
+  },
+  {
+    "title": "Experience",
+    "key": "page3"
+  },
+  {
+    "title": "Education",
+    "key": "page4"
+  },
+  {
+    "title": "Certifications",
+    "key": "page5"
+  },
+  {
+    "title": "Personal Projects",
+    "key": "page6"
+  }
+]

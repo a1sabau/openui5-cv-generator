@@ -1,0 +1,14 @@
+<SideNavigation
+    xmlns="sap.tnt"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    expanded="true"
+    itemSelect="onItemSelect"
+>
+    <NavigationList items="{path: 'sideNavigation>/'}">
+        <core:Fragment
+            fragmentName="ui5.cv.edit.view.NavigationList"
+            type="XML"
+        />
+    </NavigationList>
+</SideNavigation>

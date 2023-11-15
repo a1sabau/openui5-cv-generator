@@ -1,0 +1,60 @@
+{
+  "name": "openui5-cv-generator-frontend-edit",
+  "version": "1.0.0",
+  "author": "Andrei Sabau",
+  "license": "Apache-2.0",
+  "scripts": {
+    "watch": "ui5 serve --port 8081 -o index.html --config ui5.yaml",
+    "start:flp:local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-edit\"",
+    "watch:interface:generator": "npx @ui5/ts-interface-generator --watch",
+    "start:flp": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-edit\"",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "lint": "eslint webapp",
+    "clean": "rimraf dist coverage",
+    "prestart": "npm run ts-typecheck",
+    "prebuild": "npm run ts-typecheck",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "build:opt": "ui5 build self-contained --clean-dest --all",
+    "build:bundle": "ts-node --project tsconfig-utils.json utils/dist-cleanup.ts",
+    "start:bundle": "npm start -- --config ui5-dist-bundle.yaml",
+    "build:mock": "ui5 build self-contained --clean-dest --all",
+    "test:unit": "karma start karma-ci.conf.js --ui5.testpage webapp/test/unit/unitTests.qunit.html",
+    "test:unit:cov": "karma start karma-ci-cov.conf.js --ui5.testpage webapp/test/unit/unitTests.qunit.html",
+    "test:integration": "karma start karma-ci.conf.js --ui5.testpage webapp/test/integration/opaTests.qunit.html",
+    "test:integration:cov": "karma start karma-ci-cov.conf.js --ui5.testpage webapp/test/integration/opaTests.qunit.html",
+    "test:all:cov": "karma start karma-ci-cov.conf.js",
+    "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo"
+  },
+  "devDependencies": {
+    "@openui5/types": "1.119.0",
+    "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
+    "@sap/ui5-builder-webide-extension": "^1.1.8",
+    "@sap/ux-ui5-tooling": "1",
+    "@types/node": "^20.8.4",
+    "@types/qunit": "^2.12.0",
+    "@ui5/cli": "^3.3.1",
+    "@ui5/ts-interface-generator": "^0.8.1",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-ui5": "^3.0.3",
+    "karma-ui5-transpile": "^0.3.22",
+    "rimraf": "^5.0.1",
+    "ui5-middleware-livereload": "^0.8.4",
+    "ui5-middleware-simpleproxy": "^3.2.4",
+    "ui5-task-zipper": "^0.5.0",
+    "ui5-tooling-transpile": "^0.7.17"
+  },
+  "sapuxLayer": "CUSTOMER_BASE",
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension",
+      "ui5-task-zipper",
+      "mbt"
+    ]
+  },
+  "dependencies": {
+    "@sapui5/types": "^1.120.0"
+  }
+}

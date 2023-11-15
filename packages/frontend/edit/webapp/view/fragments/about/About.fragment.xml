@@ -1,0 +1,150 @@
+<VBox
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:u="sap.ui.unified"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:controls="ui5.cv.edit.controls"
+    class="sapUiSmallMargin"
+>
+    <smartForm:SmartForm
+        id="smartForm"
+        editable="{state>/editMode}"
+        title="{i18n>about}"
+        binding="{path: '/Cv(1)'}"
+        entityType="Cv"
+        modelContextChange=".onModelContextChange"
+    >
+        <smartForm:customToolbar>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    text="Edit"
+                    icon="sap-icon://edit"
+                    press=".handleEditPress"
+                    visible="{= !${state>/editMode}}"
+                />
+                <Button
+                    text="Save"
+                    icon="sap-icon://save"
+                    press=".handleSavePress"
+                    visible="{= ${state>/editMode}}"
+                />
+                <Button
+                    text="Cancel"
+                    icon="sap-icon://cancel"
+                    press=".handleCancelPress"
+                    visible="{= ${state>/editMode}}"
+                />
+            </Toolbar>
+        </smartForm:customToolbar>
+        <smartForm:layout>
+            <smartForm:ColumnLayout
+                columnsM="1"
+                columnsL="1"
+                columnsXL="1"
+                emptyCellsLarge="4"
+                labelCellsLarge="2"
+            />
+        </smartForm:layout>
+        <smartForm:Group title="General Info">
+            <smartForm:GroupElement>
+                <smartField:SmartField
+                    id="smartField_firstName"
+                    value="{firstName}"
+                    importance="High"
+                />
+            </smartForm:GroupElement>
+            <smartForm:GroupElement>
+                <smartField:SmartField
+                    id="smartField_lastName"
+                    value="{lastName}"
+                    importance="High"
+                />
+            </smartForm:GroupElement>
+            <smartForm:GroupElement label="Photo">
+                <controls:PhotoInput
+                    photoSrc="odata/v2/browse/Cv(1)/photo"
+                    change=".handlePhotoChange"
+                />
+                <!-- <u:FileUploader
+                    name="photo"
+                    change="onChangeImage"
+                    id="fileUploader"
+                    class="hiddenControls"
+                    fileType="jpg,png,jpeg"
+                    sendXHR="true"
+                />
+                <ImageContent id="aaa" /> -->
+                <!-- <GenericTile
+                    class="imagePreview"
+                    press="onEditImage"
+                    id="image"
+                    scope="Actions"
+                    subheader="No Image Selected"
+                >
+                    <tileContent>
+                        <TileContent id="iconContent">
+                            <content>
+                                <core:Icon
+                                    xmlns:sap.ui.core="sap.ui.core"
+                                    src="sap-icon://add"
+                                    size="2em"
+                                    id="actionIcon"
+                                    class="actionIcon"
+                                />
+                            </content>
+                        </TileContent>
+                    </tileContent>
+                </GenericTile> -->
+            </smartForm:GroupElement>
+            <smartForm:GroupElement>
+                <smartForm:layoutData>
+                    <l:GridData
+                        spanL="2"
+                        spanM="2"
+                        spanS="2"
+                    />
+                </smartForm:layoutData>
+                <smartField:SmartField
+                    id="smartField_description"
+                    value="{description}"
+                />
+            </smartForm:GroupElement>
+
+            <!-- render About field as textarea -->
+            <!-- <smartForm:GroupElement>
+                <smartField:SmartField
+                    app:multiLineSettings="{width: '100%', rows: 8}"
+                    id="smartField_about"
+                    value="{about}"
+                />
+            </smartForm:GroupElement> -->
+
+            <!-- render About field as html content (view mode) and rich text editor (edit mode) -->
+            <smartForm:GroupElement label="{i18n>about}">
+                <controls:HtmlInput content="{about}" />
+            </smartForm:GroupElement>
+        </smartForm:Group>
+
+        <smartForm:Group title="Contact Information">
+            <smartForm:GroupElement>
+                <smartField:SmartField
+                    id="smartField_email"
+                    value="{email}"
+                />
+            </smartForm:GroupElement>
+
+            <smartForm:GroupElement label="{i18n>phone}">
+                <controls:PhoneInput
+                    phone="{phone}"
+                    country="{country}"
+                />
+            </smartForm:GroupElement>
+        </smartForm:Group>
+    </smartForm:SmartForm>
+</VBox>

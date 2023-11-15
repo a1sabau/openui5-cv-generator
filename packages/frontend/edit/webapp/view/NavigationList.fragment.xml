@@ -1,0 +1,12 @@
+<NavigationListItem
+    xmlns="sap.tnt"
+    text="{sideNavigation>title}"
+    expanded="{sideNavigation>expanded}"
+    items="{path: 'sideNavigation>items', templateShareable:true}"
+    key="{sideNavigation>title}"
+>
+    <NavigationListItem
+        text="{sideNavigation>title}"
+        key="{sideNavigation>title}"
+    />
+</NavigationListItem>

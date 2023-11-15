@@ -19,6 +19,7 @@
   },
   "workspaces": [
     "packages/backend",
-    "packages/frontend/display"
+    "packages/frontend/display",
+    "packages/frontend/edit"
   ]
 }

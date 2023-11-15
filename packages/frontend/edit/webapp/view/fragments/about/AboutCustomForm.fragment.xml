@@ -1,0 +1,55 @@
+<VBox
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:controls="ui5.cv.edit.controls"
+    class="sapUiSmallMargin"
+>
+    <f:SimpleForm
+        id="SimpleFormChangeColumn_oneGroup234"
+        editable="true"
+        layout="ColumnLayout"
+        title="Address"
+        columnsM="1"
+        columnsL="1"
+        columnsXL="1"
+    >
+        <f:toolbar>
+            <Toolbar id="TB1">
+                <Title text="About" />
+                <ToolbarSpacer />
+                <Button
+                    text="Edit"
+                    visible="{= !${state>/editMode}}"
+                    press="handleEditPress"
+                />
+                <Button
+                    text="Save"
+                    type="Emphasized"
+                    visible="{= ${state>/editMode}}"
+                    press="handleSavePress"
+                />
+
+                <Button
+                    id="cancel"
+                    text="Cancel"
+                    visible="{= ${state>/editMode}}"
+                    press="handleCancelPress"
+                />
+            </Toolbar>
+        </f:toolbar>
+        <f:content>
+            <controls:FormRow
+                label="Email"
+                editable="{state>/editMode}"
+                value="{email}"
+            />
+            <controls:FormRow
+                label="Email"
+                editable="{state>/editMode}"
+                value="{email}"
+            />
+        </f:content>
+    </f:SimpleForm>
+</VBox>

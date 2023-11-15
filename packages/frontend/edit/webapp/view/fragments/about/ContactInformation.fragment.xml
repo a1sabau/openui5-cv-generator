@@ -1,0 +1,7 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:controls="ui5.cv.edit.controls"
+>
+    <Title text="Contact Information" />
+</c:FragmentDefinition>
