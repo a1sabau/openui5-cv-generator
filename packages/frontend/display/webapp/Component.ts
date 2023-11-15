@@ -1,11 +1,9 @@
 import UIComponent from 'sap/ui/core/UIComponent';
 import models from './model/models';
 import Device from 'sap/ui/Device';
-import MockServer from 'sap/ui/core/util/MockServer';
-import Log from 'sap/base/Log';
 
 /**
- * @namespace ui5.cv
+ * @namespace ui5.cv.display
  */
 export default class Component extends UIComponent {
   public static metadata = {
@@ -15,8 +13,6 @@ export default class Component extends UIComponent {
   private contentDensityClass: string;
 
   public init(): void {
-    // this.runMockServer()
-
     // call the base component's init function
     super.init();
 
@@ -47,25 +43,5 @@ export default class Component extends UIComponent {
       }
     }
     return this.contentDensityClass;
-  }
-
-  public runMockServer(): void {
-    console.log('runMockServer');
-
-    // create
-    var oMockServer = new MockServer({
-      rootUri: '/browse/',
-    });
-
-    // simulate against the metadata and mock data
-    oMockServer.simulate('./localService/metadata.xml', {
-      sMockdataBaseUrl: './localService/mockdata',
-      bGenerateMissingMockData: true,
-    });
-
-    // start
-    oMockServer.start();
-
-    Log.info('Running the app with mock data');
   }
 }

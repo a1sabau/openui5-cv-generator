@@ -75,7 +75,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "ui5.cv.i18n.i18n"
+          "bundleName": "ui5.cv.display.i18n.i18n"
         }
       }
     },
