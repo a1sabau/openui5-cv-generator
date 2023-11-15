@@ -36,6 +36,9 @@ bundle/
 out/
 coverage/
 
+# @ui5/ts-interface-generator files
+*.gen.d.ts
+
 *.txt
 pdf/
 img/
