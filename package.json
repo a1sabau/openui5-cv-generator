@@ -12,6 +12,14 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
+    "watch:dev": "npm-run-all -p watch:dev:**",
+    "watch:dev:frontend": "npm-run-all -p watch:dev:frontend:*",
+    "watch:dev:frontend:display": "npm run watch --workspace=packages/frontend/display",
+    "watch:dev:frontend:edit": "npm run watch --workspace=packages/frontend/edit",
+    "watch:dev:backend": "npm run watch --workspace=packages/backend",
+    "watch:interface:generator": "npm-run-all -p watch:interface:generator:*",
+    "watch:interface:generator:display": "npm run watch:interface:generator --workspace=packages/frontend/display",
+    "watch:interface:generator:edit": "npm run watch:interface:generator --workspace=packages/frontend/edit",
     "clean": "rimraf resources mta_archives",
     "build": "npm run clean && mbt build --mtar ui5-cv-gen",
     "deploy": "cf deploy mta_archives/ui5-cv-gen.mtar --retries 1",
