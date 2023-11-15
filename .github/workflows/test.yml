@@ -29,8 +29,11 @@ jobs:
       - name: Generate typescript types from cds
         run: npm run generate:types -w ./packages/backend
 
+      - name: Generate typescript types from control definitions
+        run: npm run interface:generator --workspaces --if-present
+
       - name: Lint check
-        run: npm run lint -w ./packages/frontend/display
+        run: npm run lint --workspaces --if-present
 
       - name: Run unit tests
         run: npm run test:unit:cov -w ./packages/frontend/display

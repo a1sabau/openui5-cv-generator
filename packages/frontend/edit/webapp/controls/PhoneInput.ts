@@ -8,12 +8,19 @@ import { IFormContent } from 'sap/ui/core/library';
 import HBox from 'sap/m/HBox';
 import ListItem from 'sap/ui/core/ListItem';
 import Form from 'sap/ui/layout/form/Form';
-import ComboBox from 'sap/m/ComboBox';
+import ComboBox, { ComboBox$SelectionChangeEvent } from 'sap/m/ComboBox';
 import Input from 'sap/m/Input';
+import { InputBase$ChangeEvent } from 'sap/m/InputBase';
 
 /**
  * @namespace ui5.cv.edit.controls
  */
+
+type CountryInfo = {
+  code: string;
+  prefix: string;
+  name: string;
+};
 export default class PhoneInput extends Control implements IFormContent {
   __implements__sap_ui_core_IFormContent: boolean;
 
@@ -130,8 +137,8 @@ export default class PhoneInput extends Control implements IFormContent {
     this.setProperty('country', country, true);
 
     // countries model has been loaded, we can lookup the prefix
-    if (Array.isArray(this.oCountriesModel.getData())) {
-      const oCountry = this.oCountriesModel.getData().find((entry: any) => entry.code === country);
+    if (Array.isArray(this.getCountries())) {
+      const oCountry = this.getCountries().find((entry: CountryInfo) => entry.code === country);
       this.setPrefix(oCountry?.prefix || '-');
     }
   }
@@ -173,11 +180,11 @@ export default class PhoneInput extends Control implements IFormContent {
   private async loadJSONModels() {
     const oCountryNamesModel = new JSONModel();
     await oCountryNamesModel.loadData('../model/country-names.json');
-    const mCountryNames: { [key: string]: string } = oCountryNamesModel.getData();
+    const mCountryNames = oCountryNamesModel.getData() as { [key: string]: string };
 
     const oCountryPhoneCodesModel = new JSONModel();
     await oCountryPhoneCodesModel.loadData('../model/country-phone-codes.json');
-    const mCountryPhoneCodes: { [key: string]: string } = oCountryPhoneCodesModel.getData();
+    const mCountryPhoneCodes = oCountryPhoneCodesModel.getData() as { [key: string]: string };
 
     const aCountries = Object.keys(mCountryNames)
       .map((countryKey) => ({
@@ -191,16 +198,20 @@ export default class PhoneInput extends Control implements IFormContent {
     this.oCountriesModel.setData(aCountries);
   }
 
-  private onCountryChange(oEvent: any) {
+  private onCountryChange(oEvent: ComboBox$SelectionChangeEvent) {
     const value = oEvent.getParameter('selectedItem').getKey();
-    const oCountry = this.oCountriesModel.getData().find((entry: any) => entry.code === value);
+    const oCountry = this.getCountries().find((entry: CountryInfo) => entry.code === value);
     this.setCountry(oCountry.code);
     this.fireEvent('change', { value });
   }
 
-  private onPhoneChange(oEvent: any) {
+  private onPhoneChange(oEvent: InputBase$ChangeEvent) {
     const value = oEvent.getParameter('value');
     this.setProperty('phone', value, true);
     this.fireEvent('change', { value });
+  }
+
+  private getCountries(): CountryInfo[] {
+    return this.oCountriesModel.getData() as CountryInfo[];
   }
 }

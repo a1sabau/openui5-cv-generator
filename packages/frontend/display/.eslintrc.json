@@ -19,7 +19,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["*.js", "Component.ts"],
+  "ignorePatterns": ["*.js", "Component.ts", "*.gen.d.ts"],
   "rules": {
     "quotes": ["error", "single"],
     "comma-dangle": ["error", "always-multiline"],

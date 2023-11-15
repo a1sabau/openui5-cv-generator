@@ -65,6 +65,7 @@ export default class FormRow extends Control {
     this.setAggregation('_text', new Text({}));
 
     this.inputEventHandler = this.inputEventHandler.bind(this);
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     (this.getAggregation('_input') as Input).getDomRef().addEventListener('input', this.inputEventHandler);
   }
 
@@ -87,6 +88,7 @@ export default class FormRow extends Control {
   }
 
   private inputEventHandlerCleanup() {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     (this.getAggregation('_input') as Input).getDomRef().removeEventListener('input', this.inputEventHandler);
   }
 }

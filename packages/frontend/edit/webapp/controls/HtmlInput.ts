@@ -4,6 +4,7 @@ import HTML from 'sap/ui/core/HTML';
 import RichTextEditor, { RichTextEditor$ChangeEvent } from 'sap/ui/richtexteditor/RichTextEditor';
 import Control from 'sap/ui/core/Control';
 import { IFormContent } from 'sap/ui/core/library';
+import Form from 'sap/ui/layout/form/Form';
 
 /**
  * @namespace ui5.cv.edit.controls
@@ -45,11 +46,11 @@ export default class HtmlInput extends Control implements IFormContent {
         oParentForm = oParentForm.getParent();
       }
       // get parent form editable status
-      const editable = (oParentForm as any)?.getEditable() ?? false;
+      const bEditable = (oParentForm as Form)?.getEditable() ?? false;
 
       oRm.openStart('div', oControl).class('ui5_cv_spacious').openEnd();
 
-      if (!editable) {
+      if (!bEditable) {
         oRm.renderControl(oControl.getAggregation('_htmlViewer') as HTML);
       } else {
         oRm.renderControl(oControl.getAggregation('_richTextEditor') as RichTextEditor);
@@ -62,6 +63,8 @@ export default class HtmlInput extends Control implements IFormContent {
     this.setAggregation('_htmlViewer', new HTML({ sanitizeContent: false }));
 
     this.onEditorChange = this.onEditorChange.bind(this);
+
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     const rte = new RichTextEditor({ change: this.onEditorChange });
     rte.addStyleClass('ui5_cv_rte');
     this.setAggregation('_richTextEditor', rte);
@@ -84,6 +87,7 @@ export default class HtmlInput extends Control implements IFormContent {
   }
 
   private eventCleanup() {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     (this.getAggregation('_richTextEditor') as RichTextEditor).detachChange(this.onEditorChange);
   }
 }

@@ -7,6 +7,7 @@
     "watch": "ui5 serve --port 8081 -o index.html --config ui5.yaml",
     "start:flp:local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-edit\"",
     "watch:interface:generator": "npx @ui5/ts-interface-generator --watch",
+    "interface:generator": "npx @ui5/ts-interface-generator",
     "start:flp": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-edit\"",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
     "lint": "eslint webapp",

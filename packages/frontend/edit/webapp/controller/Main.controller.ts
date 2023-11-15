@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Controller from 'sap/ui/core/mvc/Controller';
 import JSONModel from 'sap/ui/model/json/JSONModel';
 import Event from 'sap/ui/base/Event';
@@ -13,6 +14,15 @@ import Context from 'sap/ui/model/Context';
 /**
  * @namespace ui5.cv.edit.controller
  */
+
+type Metadata = {
+  term: string,
+  extensions: {
+    value: string
+  }[],
+  [key: string]: any,
+}
+
 export default class App extends Controller {
   stateModel: JSONModel;
 
@@ -20,10 +30,15 @@ export default class App extends Controller {
     var oModel = this.getOwnerComponent().getModel() as ODataModel;
 
     // Attach an event handler for the metadataLoaded event
-    oModel.metadataLoaded().then(async () => {
-      var oResourceBundle = await (this.getOwnerComponent().getModel('i18n') as ResourceModel).getResourceBundle();
-      this.replaceLabelsFromI18n(oModel.getServiceMetadata(), oResourceBundle);
-    });
+    oModel
+      .metadataLoaded()
+      .then(async () => {
+        var oResourceBundle = await (this.getOwnerComponent().getModel('i18n') as ResourceModel).getResourceBundle();
+        this.replaceLabelsFromI18n(oModel.getServiceMetadata() as Metadata, oResourceBundle);
+      })
+      .catch((oError) => {
+        console.log('oError', oError);
+      });
 
     /*
     using OData v2 as v4 is not supported by SmartForm
@@ -42,12 +57,11 @@ export default class App extends Controller {
     this.getView().setModel(this.stateModel, 'state');
   }
 
-  private replaceLabelsFromI18n(oObject: any, i18nBundle: ResourceBundle): void {
-    if (oObject?.term === 'Common.Label') {
-      const i18nFullKey = oObject.extensions[0].value;
+  private replaceLabelsFromI18n(oMetadata: Metadata, i18nBundle: ResourceBundle): void {
+    if (oMetadata?.term === 'Common.Label') {
+      const i18nFullKey = oMetadata.extensions[0].value;
       if (/^i18n>/.test(i18nFullKey)) {
         const i18nKey = i18nFullKey.replace(/^i18n>/, '');
-        console.log('found extension', i18nKey, i18nBundle.getText(i18nKey));
         const i18nValue = i18nBundle.getText(i18nKey);
 
         var oSmartField = this.byId(`smartField_${i18nKey}`) as SmartField;
@@ -56,9 +70,9 @@ export default class App extends Controller {
         }
       }
     } else {
-      for (var key in oObject) {
-        if (typeof oObject[key] === 'object') {
-          this.replaceLabelsFromI18n(oObject[key], i18nBundle);
+      for (var key in oMetadata) {
+        if (typeof oMetadata[key] === 'object') {
+          this.replaceLabelsFromI18n(oMetadata[key] as Metadata, i18nBundle);
         }
       }
     }
@@ -68,9 +82,9 @@ export default class App extends Controller {
     this.stateModel.setProperty('/editMode', true);
   }
 
-  public handleCancelPress(oEvent: Event): void {
+  public async handleCancelPress(oEvent: Event): Promise<void> {
     var oModel = this.getView().getModel() as ODataModel;
-    oModel.resetChanges();
+    await oModel.resetChanges();
     this.stateModel.setProperty('/editMode', false);
   }
 
@@ -117,8 +131,8 @@ export default class App extends Controller {
           oSmartForm.getElementBinding().refresh();
           this.stateModel.setProperty('/editMode', false);
         },
-        error: (oError) => {
-          MessageToast.show('Error saving changes');
+        error: (oError:Error) => {
+          MessageToast.show(`Error saving changes ${oError.message}`);
         },
       });
     } else {
@@ -127,30 +141,34 @@ export default class App extends Controller {
   }
 
   private validateForm(oSmartForm: SmartForm) {
+    /*
     var aFormElements = oSmartForm.getGroups().reduce(function (aElements, oGroup) {
       return aElements.concat(oGroup.getGroupElements());
     }, []);
+    */
 
     var bFormIsValid = true;
 
+    /*
     // Iterate through all form elements
     aFormElements.forEach(function (oFormElement) {
       var aFields = oFormElement.getFields();
 
       // Iterate through all fields in the form element
-      // aFields.forEach(function (oField: SmartField) {
-      //   // Check if the field has a validateField method
-      //   if (typeof oField.validateField === "function") {
-      //     // Call the validateField method for custom validation
-      //     oField.validateField();
+      aFields.forEach(function (oField: SmartField) {
+        // Check if the field has a validateField method
+        if (typeof oField.validateField === "function") {
+          // Call the validateField method for custom validation
+          oField.validateField();
 
-      //     // Check the value state after validation
-      //     if (oField.getValueState() === "Error") {
-      //       bFormIsValid = false;
-      //     }
-      //   }
-      // });
+          // Check the value state after validation
+          if (oField.getValueState() === "Error") {
+            bFormIsValid = false;
+          }
+        }
+      });
     });
+    */
 
     return bFormIsValid;
   }
@@ -163,12 +181,14 @@ export default class App extends Controller {
     const oModel = this.getView().getModel() as ODataModel;
     const base64Img = oEvent.getParameter('value');
 
-    const oHandle = oModel.callFunction('/Cv_savePhoto', {
+    const {contextCreated} = oModel.callFunction('/Cv_savePhoto', {
       method: 'POST',
       urlParameters: {
         ID: 1,
         photo: base64Img,
       },
     }) as { contextCreated: () => Promise<Context> };
+
+    await contextCreated();
   }
 }

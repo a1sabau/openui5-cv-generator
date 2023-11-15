@@ -94,7 +94,7 @@ export default class PhotoInput extends Control implements IFormContent {
   }
 
   private onFilePathChange(oEvent: FileUploader$ChangeEvent) {
-    const arrFiles: FileList = oEvent.getParameter('files') as any;
+    const arrFiles = oEvent.getParameter('files') as File[];
     const oFile = arrFiles[0];
     const sPreviewPath = URL.createObjectURL(oFile);
 
