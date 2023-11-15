@@ -29,25 +29,34 @@ This will install dependencies for all monorepo packages available under `/packa
 ### Start CAP backend
 
 ```
-cd packages/backend
-npm run watch
+npm run watch:dev:backend
 ```
 
 Monitors changes, available under `localhost:4004/`. Contains the [odata-v2-adapter](https://github.com/cap-js-community/odata-v2-adapter) so that the service endpoints are available both under OData v2 and v4.
 
 ### Start OpenUI5 frontend
 
-Generate typescript types based on backend cds
+Each frontend npm workspace corresponds to a BTP Work Zone (Launchpad) app.
+
+Generate typescript types based on backend cds.
 
 ```
 npm run -w packages/backend generate:types
 ```
 
-Monitors changes, available under `localhost:8080/index.html`.
+Generate and monitor typescript types for the custom controls in frontend npm workspaces.
 
 ```
-cd packages/frontend/display
-npm start
+npm run watch:interface:generator
+```
+
+Start and monitors changes in frontend npm workspaces:
+
+- `frontend:display`: `localhost:8080/index.html`
+- `frontend:edit`: `localhost:8081/index.html`
+
+```
+npm run watch:dev:frontend
 ```
 
 Under the `Cv` semantic object, the sapui5 app linked to the `display` action uses OData v2 to load the corresponding data. Because v2 can be mocked on client side, the project offers the possibility to bundle the `Cv-display` app in just html, js and css files with OData v2 content exported as json files. In this standalone mode you can interact with the app without hosting a CAP backend.
