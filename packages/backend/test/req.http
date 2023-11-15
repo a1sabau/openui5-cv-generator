@@ -24,5 +24,42 @@ GET http://localhost:4004/odata/v2/browse/Cv(1)/Projects
 
 GET http://localhost:4004/odata/v4/browse/Tags
 
+###
+
+POST http://localhost:4004/odata/v2/browse/Cv_savePhoto?ID=1
+Accept: application/json
+# Content-Type: application/json
+Content-Type: image/png
+
+< ./test.png
+
+# {
+#     "ID": 1,
+#     "photo": "binary'Q0FQIE5vZGUuanM='"
+# }
+
+###
+
+POST http://localhost:4004/odata/v2/browse/Cv_savePhoto?ID=1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "photo": "Q0FQIE5vZGUuanM="
+}
+
+###
+
+POST http://localhost:4004/odata/v2/browse/Cv_savePhoto?ID=1&photo=Q0FQIE5vZGUuanM%3D
+Accept: application/json
+Content-Type: application/json
+
+###
+
+POST http://localhost:4004/odata/v2/browse/Cv_savePhoto?ID=1&photo=binary'Q0FQIE5vZGUuanM='
+Accept: application/json
+Content-Type: application/json
+
+
 
 

@@ -44,7 +44,14 @@ entity Cv {
     @Common.Label: 'i18n>description'
     description: String(400);
 
-    @UI.multiLineText: true
+    @Common.Label: 'i18n>photo'
+    @Core.MediaType: 'image/png'
+    photo: LargeBinary;
+
+    @mandatory
+    @UI: {
+        MultiLineText: true
+    }
     @Common.Label: 'i18n>about'
     about: String(1500);
 
