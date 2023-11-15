@@ -4,14 +4,17 @@ import Control from 'sap/ui/core/Control';
 import Link from 'sap/m/Link';
 import VBox from 'sap/m/VBox';
 
-interface ILinkViewer {
-  getLinks(): string;
-}
-
 /**
  * @namespace ui5.cv.display.controls
  */
 export default class LinkViewer extends Control {
+  // The following three lines were generated and should remain as-is to make TypeScript aware of the constructor signatures
+  constructor(idOrSettings?: string | $LinkViewerSettings);
+  constructor(id?: string, settings?: $LinkViewerSettings);
+  constructor(id?: string, settings?: $LinkViewerSettings) {
+    super(id, settings);
+  }
+
   static readonly metadata: MetadataOptions = {
     properties: {
       links: 'string',
@@ -20,13 +23,11 @@ export default class LinkViewer extends Control {
 
   static renderer = {
     apiVersion: 2,
-    render: function (rm: RenderManager, control: LinkViewer & ILinkViewer) {
-      rm.class('ui5_cv_spacious');
-      rm.openStart('div', control);
-      rm.openEnd();
+    render: function (oRm: RenderManager, oControl: LinkViewer) {
+      oRm.openStart('div', oControl).class('ui5_cv_spacious').openEnd();
 
       // needed for odata v2 not supporing entity Projects {... links: many String(200); ...}
-      const linkItems = control
+      const arrLinkItems = oControl
         .getLinks()
         .split(',')
         .map((link) => {
@@ -40,12 +41,12 @@ export default class LinkViewer extends Control {
         });
 
       const vBox = new VBox({
-        items: linkItems,
+        items: arrLinkItems,
       });
       vBox.addStyleClass('sapUiSmallMarginBottom');
 
-      rm.renderControl(vBox);
-      rm.close('div');
+      oRm.renderControl(vBox);
+      oRm.close('div');
     },
   };
 }

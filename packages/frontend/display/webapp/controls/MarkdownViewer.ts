@@ -5,15 +5,17 @@ import Control from 'sap/ui/core/Control';
 import Grid from 'sap/ui/layout/Grid';
 import GridData from 'sap/ui/layout/GridData';
 
-interface IMarkdownViewer {
-  getContent(): string;
-  getCols(): number;
-}
-
 /**
  * @namespace ui5.cv.display.controls
  */
 export default class MarkdownViewer extends Control {
+  // The following three lines were generated and should remain as-is to make TypeScript aware of the constructor signatures
+  constructor(idOrSettings?: string | $MarkdownViewerSettings);
+  constructor(id?: string, settings?: $MarkdownViewerSettings);
+  constructor(id?: string, settings?: $MarkdownViewerSettings) {
+    super(id, settings);
+  }
+
   static readonly metadata: MetadataOptions = {
     properties: {
       content: 'string',
@@ -23,25 +25,23 @@ export default class MarkdownViewer extends Control {
 
   static renderer = {
     apiVersion: 2,
-    render: function (rm: RenderManager, control: MarkdownViewer & IMarkdownViewer) {
-      if (!control.getContent()) {
+    render: function (oRm: RenderManager, oControl: MarkdownViewer) {
+      if (!oControl.getContent()) {
         return;
       }
 
-      rm.class('ui5_cv_spacious');
-      rm.openStart('div', control);
-      rm.openEnd();
+      oRm.openStart('div', oControl).class('ui5_cv_spacious').openEnd();
 
-      const cols = control.getCols();
+      const nCols = oControl.getCols();
 
-      if (cols === 1) {
-        rm.renderControl(new HTML({ content: control.getContent(), sanitizeContent: false }));
-        rm.close('div');
+      if (nCols === 1) {
+        oRm.renderControl(new HTML({ content: oControl.getContent(), sanitizeContent: false }));
+        oRm.close('div');
         return;
       }
 
-      const colSpan = Math.floor(12 / cols);
-      const pEls = control
+      const colSpan = Math.floor(12 / nCols);
+      const pEls = oControl
         .getContent()
         .split(/<p>/)
         .map((el) => el.replace(/<\/p>/, ''))
@@ -58,8 +58,8 @@ export default class MarkdownViewer extends Control {
         }),
       });
 
-      rm.renderControl(grid);
-      rm.close('div');
+      oRm.renderControl(grid);
+      oRm.close('div');
     },
   };
 }
