@@ -4,9 +4,10 @@
   "author": "Andrei Sabau",
   "license": "Apache-2.0",
   "scripts": {
-    "start:noflp": "ui5 serve --port 8080 -o index.html --config ui5.yaml",
+    "watch": "ui5 serve --port 8080 -o index.html --config ui5.yaml",
     "start:flp:local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-display\"",
     "start:flp": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#Cv-display\"",
+    "watch:interface:generator": "npx @ui5/ts-interface-generator --watch",
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
     "lint": "eslint webapp",
     "clean": "rimraf dist coverage",
@@ -27,8 +28,13 @@
   },
   "devDependencies": {
     "@openui5/types": "1.119.0",
+    "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
+    "@sap/ui5-builder-webide-extension": "^1.1.8",
+    "@sap/ux-ui5-tooling": "1",
     "@types/node": "^20.8.4",
+    "@types/qunit": "^2.12.0",
     "@ui5/cli": "^3.3.1",
+    "@ui5/ts-interface-generator": "^0.8.1",
     "karma": "^6.4.2",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "^2.2.1",
@@ -37,12 +43,8 @@
     "rimraf": "^5.0.1",
     "ui5-middleware-livereload": "^0.8.4",
     "ui5-middleware-simpleproxy": "^3.2.4",
-    "ui5-tooling-transpile": "^0.7.17",
-    "@sap/ux-ui5-tooling": "1",
-    "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
-    "@types/qunit": "^2.12.0",
-    "@sap/ui5-builder-webide-extension": "^1.1.8",
-    "ui5-task-zipper": "^0.5.0"
+    "ui5-task-zipper": "^0.5.0",
+    "ui5-tooling-transpile": "^0.7.17"
   },
   "sapuxLayer": "CUSTOMER_BASE",
   "ui5": {
