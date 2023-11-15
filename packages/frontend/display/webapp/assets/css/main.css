@@ -2,8 +2,13 @@ li.ui5_cv_noBorder {
   border: none;
 }
 
+div.ui5_cv_spacious {
+  font-size: 0.875rem;
+}
+
 div.ui5_cv_spacious p {
   line-height: 1.5rem;
+  margin: 0;
 }
 
 div.ui5_cv_spacious mark {
